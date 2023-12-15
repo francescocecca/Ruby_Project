@@ -43,6 +43,18 @@ Book.create(
     },
   ]
 
-
+  Author.create(
+    [
+      {
+        name: "Carlos Ruiz Zafon",
+      },
+      {
+        name= "J.K. Rowling",
+      },
+      {
+        name="Fabio Martini",
+      },
+    ]
+  )
 
 )
