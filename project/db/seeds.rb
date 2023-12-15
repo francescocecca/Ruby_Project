@@ -42,19 +42,21 @@ Book.create(
       year: 2016
     },
   ]
+)
 
-  Author.create(
-    [
-      {
-        name: "Carlos Ruiz Zafon",
-      },
-      {
-        name= "J.K. Rowling",
-      },
-      {
-        name="Fabio Martini",
-      },
-    ]
-  )
+Author.destroy_all
+Author.reset_pk_sequence
 
+Author.create(
+  [
+    {
+       name: "Carlos Ruiz Zafon",
+     },
+     {
+       name: "J.K. Rowling",
+     },
+     {
+       name:"Fabio Martini",
+     },
+  ]
 )
