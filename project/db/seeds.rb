@@ -60,3 +60,20 @@ Author.create(
      },
   ]
 )
+
+Category.destroy_all
+Category.reset_pk_sequence
+
+Category.create(
+  [
+    {
+      name: "Storia",
+    },
+    {
+      name: "Fantasy",
+    },
+    {
+      name: "Giallo"
+    },
+  ]
+)
