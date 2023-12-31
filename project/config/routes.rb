@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users, path: '', path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    registration: 'signup'
+  },
+  controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -13,4 +23,5 @@ Rails.application.routes.draw do
   get "/authors/:id", to: "authors#get_authors_by_id"
   get "/category", to: "category#get_all_category"
   get "/category/:id", to: "category#get_category_by_id"
+
 end
