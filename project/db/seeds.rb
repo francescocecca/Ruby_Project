@@ -8,42 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Book.destroy_all
-Book.reset_pk_sequence
-
-Book.create(
-  [
-    {
-      title:'Controvento',
-      year: 2020,
-    },
-    {
-      title: 'Harry Potter e i doni della morte',
-      year: 2007,
-    },
-    {
-      title: 'Harry Potter e il principe mezzosangue',
-      year: 2005
-    },
-    {
-      title:'Harry Potter e il calice di fuoco',
-      year: 2000,
-    },
-    {
-      title: 'Il gioco dell angelo',
-      year: 2008,
-    },
-    {
-      title: 'Il prigioniero del cielo',
-      year: 2011
-    },
-    {
-      title: 'Il labirinto degli spiriti',
-      year: 2016
-    },
-  ]
-)
-
 Author.destroy_all
 Author.reset_pk_sequence
 
@@ -58,6 +22,53 @@ Author.create(
      {
        name:"Fabio Martini",
      },
+  ]
+)
+
+author_carlos = Author.find_by(name: "Carlos Ruiz Zafon")
+author_rowling = Author.find_by(name: "J.K. Rowling")
+author_fabio = Author.find_by(name: "Fabio Martini")
+
+Book.destroy_all
+Book.reset_pk_sequence
+
+Book.create(
+  [
+    {
+      title:'Controvento',
+      year: 2020,
+      author: author_fabio
+    },
+    {
+      title: 'Harry Potter e i doni della morte',
+      year: 2007,
+      author: author_rowling
+    },
+    {
+      title: 'Harry Potter e il principe mezzosangue',
+      year: 2005,
+      author: author_rowling
+    },
+    {
+      title:'Harry Potter e il calice di fuoco',
+      year: 2000,
+      author: author_rowling
+    },
+    {
+      title: 'Il gioco dell angelo',
+      year: 2008,
+      author: author_carlos
+    },
+    {
+      title: 'Il prigioniero del cielo',
+      year: 2011,
+      author: author_carlos
+    },
+    {
+      title: 'Il labirinto degli spiriti',
+      year: 2016,
+      author: author_carlos
+    },
   ]
 )
 
