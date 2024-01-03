@@ -1,13 +1,14 @@
 class BooksController < ApplicationController
-  /def get_all_books
+  def get_all_books
     @books = Book.all
     render json:{"data": @books}
-  end/
+  end
 
   def get_book_by_id
     @book = Book.find(params[:id])
     render json:{"data": @book}
   end
+
 
   def get_all_books
     if params[:author].present?
@@ -27,4 +28,8 @@ class BooksController < ApplicationController
     render json: { data: @books }
   end
 
+  def get_book_year
+    @book = Book.where(year: params[:year])
+    render json: {"data": @book}
+  end
 end
