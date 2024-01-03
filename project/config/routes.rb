@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get "/books/year/:year", to: "books#get_book_year"
   get "/authors", to: "authors#get_all_authors"
   get "/authors/:id", to: "authors#get_authors_by_id"
+  get "/authors/name/:name", to: "authors#get_by_name"
   get "/category", to: "category#get_all_category"
   get "/category/:id", to: "category#get_category_by_id"
 

@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     render json:{"data": @book}
   end
 
-
+  / Search with the space /
   def get_all_books
     if params[:author].present?
       @author = Author.find_by(name: params[:author])
