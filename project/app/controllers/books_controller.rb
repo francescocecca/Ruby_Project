@@ -8,4 +8,28 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     render json:{"data": @book}
   end
+
+  / Search with the space /
+  def get_all_books
+    if params[:author].present?
+      @author = Author.find_by(name: params[:author])
+      puts "#{@author}"
+
+      if @author.present?
+        @books = @author.books
+      else
+        render json: { error: "Autore non trovato" }, status: :not_found
+        return
+      end
+    else
+      @books = Book.all
+    end
+
+    render json: { data: @books }
+  end
+
+  def get_book_year
+    @book = Book.where(year: params[:year])
+    render json: {"data": @book}
+  end
 end

@@ -8,4 +8,10 @@ class AuthorsController < ApplicationController
     @author = Author.find(params[:id])
     render json:{"data": @author}
   end
+
+  / Search with the space /
+  def get_by_name
+    @author = Author.where(name: params[:name])
+    render json: {"data": @author}
+  end
 end
