@@ -29,9 +29,6 @@ Rails.application.routes.draw do
   get "/authors/name/:name", to: "authors#get_by_name"
   get "/category", to: "category#get_all_category"
   get "/category/:id", to: "category#get_category_by_id"
-<<<<<<< Updated upstream
 
 
-=======
->>>>>>> Stashed changes
 end
