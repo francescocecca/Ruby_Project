@@ -9,7 +9,10 @@ class BooksController < ApplicationController
     render json:{"data": @book}
   end
 
+<<<<<<< Updated upstream
   / Search with the space /
+=======
+>>>>>>> Stashed changes
   def get_all_books
     if params[:author].present?
       @author = Author.find_by(name: params[:author])
@@ -27,9 +30,12 @@ class BooksController < ApplicationController
 
     render json: { data: @books }
   end
+<<<<<<< Updated upstream
 
   def get_book_year
     @book = Book.where(year: params[:year])
     render json: {"data": @book}
   end
+=======
+>>>>>>> Stashed changes
 end
