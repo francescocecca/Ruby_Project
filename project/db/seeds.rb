@@ -13,6 +13,9 @@
 BookAuthor.destroy_all
 BookAuthor.reset_pk_sequence
 
+BookCategory.destroy_all
+BookCategory.reset_pk_sequence
+
 Book.destroy_all
 Book.reset_pk_sequence
 
@@ -117,6 +120,39 @@ Category.create(
     },
     {
       name: "Giallo"
+    },
+  ]
+)
+
+BookCategory.create(
+  [
+    {
+      book_id: 1,
+      category_id: 1
+    },
+    {
+      book_id: 2,
+      category_id: 2
+    },
+    {
+      book_id: 3,
+      category_id: 2
+    },
+    {
+      book_id: 4,
+      category_id: 2
+    },
+    {
+      book_id: 5,
+      category_id: 3
+    },
+    {
+      book_id: 6,
+      category_id: 3
+    },
+    {
+      book_id: 7,
+      category_id: 3
     },
   ]
 )
