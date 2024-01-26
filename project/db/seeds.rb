@@ -8,8 +8,22 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# Destroy the join table first and book and author later
+
+BookAuthor.destroy_all
+BookAuthor.reset_pk_sequence
+
+BookCategory.destroy_all
+BookCategory.reset_pk_sequence
+
+Book.destroy_all
+Book.reset_pk_sequence
+
 Author.destroy_all
 Author.reset_pk_sequence
+
+Category.destroy_all
+Category.reset_pk_sequence
 
 Author.create(
   [
@@ -29,51 +43,72 @@ author_carlos = Author.find_by(name: "Carlos Ruiz Zafon")
 author_rowling = Author.find_by(name: "J.K. Rowling")
 author_fabio = Author.find_by(name: "Fabio Martini")
 
-Book.destroy_all
-Book.reset_pk_sequence
 
 Book.create(
   [
     {
       title:'Controvento',
       year: 2000,
-      author: author_fabio
     },
     {
       title: 'Harry Potter e i doni della morte',
       year: 2007,
-      author: author_rowling
     },
     {
       title: 'Harry Potter e il principe mezzosangue',
       year: 2005,
-      author: author_rowling
     },
     {
       title:'Harry Potter e il calice di fuoco',
       year: 2000,
-      author: author_rowling
     },
     {
       title: 'Il gioco dell angelo',
       year: 2008,
-      author: author_carlos
     },
     {
       title: 'Il prigioniero del cielo',
       year: 2011,
-      author: author_carlos
     },
     {
       title: 'Il labirinto degli spiriti',
       year: 2016,
-      author: author_carlos
     },
   ]
 )
 
-Category.destroy_all
-Category.reset_pk_sequence
+BookAuthor.create(
+  [
+    {
+      book_id: 1,
+      author_id: 3,
+    },
+    {
+      book_id: 2,
+      author_id: 2,
+    },
+    {
+      book_id: 3,
+      author_id: 2,
+    },
+    {
+      book_id: 4,
+      author_id: 2,
+    },
+    {
+      book_id: 5,
+      author_id: 1,
+    },
+    {
+      book_id: 6,
+      author_id: 1,
+    },
+    {
+      book_id: 7,
+      author_id: 1,
+    }
+  ]
+)
 
 Category.create(
   [
@@ -85,6 +120,39 @@ Category.create(
     },
     {
       name: "Giallo"
+    },
+  ]
+)
+
+BookCategory.create(
+  [
+    {
+      book_id: 1,
+      category_id: 1
+    },
+    {
+      book_id: 2,
+      category_id: 2
+    },
+    {
+      book_id: 3,
+      category_id: 2
+    },
+    {
+      book_id: 4,
+      category_id: 2
+    },
+    {
+      book_id: 5,
+      category_id: 3
+    },
+    {
+      book_id: 6,
+      category_id: 3
+    },
+    {
+      book_id: 7,
+      category_id: 3
     },
   ]
 )

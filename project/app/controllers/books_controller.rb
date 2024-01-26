@@ -1,41 +1,34 @@
 class BooksController < ApplicationController
   def get_all_books
     @books = Book.all
-    render json:{"data": @books}
+    render json:{"data": @books}, include: [:authors, :categories]
   end
 
   def get_book_by_id
     @book = Book.find(params[:id])
-    render json:{"data": @book}
+    render json:{"data": @book}, include: [:authors, :categories]
   end
 
-<<<<<<< Updated upstream
-  / Search with the space /
-=======
->>>>>>> Stashed changes
-  def get_all_books
-    if params[:author].present?
-      @author = Author.find_by(name: params[:author])
-      puts "#{@author}"
-
-      if @author.present?
-        @books = @author.books
-      else
-        render json: { error: "Autore non trovato" }, status: :not_found
-        return
-      end
+  def create_new_book
+    if user_signed_in?
+      render json: {
+        status: {code: 200, message: 'Book created.'},
+        data: Book.create([{title: params[:book][:title], year: params[:book][:year]}])
+      }
     else
-      @books = Book.all
+      render json: {"data": {"test": "Book not created, only signed user can do it"}}
     end
-
-    render json: { data: @books }
   end
-<<<<<<< Updated upstream
 
-  def get_book_year
-    @book = Book.where(year: params[:year])
-    render json: {"data": @book}
+  def destroy_book_by_id
+    if user_signed_in?
+      @book = Book.find(params[:id])
+      @book.destroy
+      render json:{"data": {"test": "Book deleted"}}
+    else
+      render json: {"data": {"test": "Book not deleted, only signed user can do it"}}
+    end
   end
-=======
->>>>>>> Stashed changes
+
+
 end
