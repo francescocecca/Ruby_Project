@@ -29,5 +29,10 @@ Rails.application.routes.draw do
   get "/category", to: "category#get_all_category"  # buona
   get "/category/:id", to: "category#get_category_by_id" # buona
 
+  get "/example", to: "example#example_handler"
+
+  post "/create_book", to: "books#create_new_book"
+  get "/destroy_book/:id", to: "books#destroy_book_by_id"
+
 
 end
